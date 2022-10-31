@@ -210,7 +210,6 @@ jobs:
 
   # This job is responsible for generating the installers (using installbuilder)
   package:
-    needs: code-sign-mac-executable
     runs-on: ubuntu-18.04
 
     env:
@@ -421,6 +420,7 @@ jobs:
 
   create-release:
     runs-on: ubuntu-18.04
+    needs: code-sign-mac-installers
 
     steps:
       - name: Checkout
