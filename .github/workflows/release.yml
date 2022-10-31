@@ -181,9 +181,9 @@ jobs:
         run: |
           cat > gon.config.hcl <<EOF
           source = ["arduino-create-agent/arduino-create-agent"]
-          bundle_id = "cc.arduino.arduino-agent"
+          bundle_id = "com.circuitmess.circuitblocks-agent"
           sign {
-            application_identity = "Apple Development: domagoj.kriskovic@gmail.com (56L555X659)"
+            application_identity = "Developer ID Application: CircuitMess d.o.o. (KLW4LV446H)"
           }
           # Ask Gon for zip output to force notarization process to take place.
           # The CI will ignore the zip output, using the signed binary only.
@@ -390,10 +390,10 @@ jobs:
         run: |
           cat > gon.config_installer.hcl <<EOF
           source = ["ArduinoCreateAgent-osx/ArduinoCreateAgent-${GITHUB_REF##*/}-osx${{ matrix.arch }}-installer-${{ matrix.browser }}.app"]
-          bundle_id = "cc.arduino.arduino-agent-installer"
+          bundle_id = "com.circuitmess.circuitblocks-agent-installer"
 
           sign {
-            application_identity = "Apple Development: domagoj.kriskovic@gmail.com (56L555X659)"
+            application_identity = "Developer ID Application: CircuitMess d.o.o. (KLW4LV446H)"
           }
 
           dmg {
