@@ -421,7 +421,6 @@ jobs:
 
   create-release:
     runs-on: ubuntu-18.04
-    needs: code-sign-mac-installers
 
     steps:
       - name: Checkout
