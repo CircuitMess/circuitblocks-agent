@@ -183,7 +183,7 @@ jobs:
           source = ["arduino-create-agent/arduino-create-agent"]
           bundle_id = "cc.arduino.arduino-agent"
           sign {
-            application_identity = "Developer ID Application: ARDUINO SA (7KT7ZWMCJT)"
+            application_identity = "Apple Development: domagoj.kriskovic@gmail.com (56L555X659)"
           }
           # Ask Gon for zip output to force notarization process to take place.
           # The CI will ignore the zip output, using the signed binary only.
@@ -393,7 +393,7 @@ jobs:
           bundle_id = "cc.arduino.arduino-agent-installer"
 
           sign {
-            application_identity = "Developer ID Application: ARDUINO SA (7KT7ZWMCJT)"
+            application_identity = "Apple Development: domagoj.kriskovic@gmail.com (56L555X659)"
           }
 
           dmg {
