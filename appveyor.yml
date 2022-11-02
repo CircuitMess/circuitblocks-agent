@@ -22,7 +22,7 @@ install:
   - set PATH=%GOPATH%\bin;%PATH%
   # glide setup, if your package uses it
   #- go get -u github.com/mh-cbon/never-fail
-  - go install github.com/goreleaser/goreleaser@latest
+  - go get -u github.com/goreleaser/goreleaser
   # - go get -u github.com/Masterminds/glide
   # setup go-msi, choose one method
   #
@@ -41,7 +41,6 @@ install:
   #- choco install go-msi -y
   #- glide install
 
-
 build_script:
   - set GH_APP=%APPVEYOR_PROJECT_NAME%
   - set GH_USER=%APPVEYOR_ACCOUNT_NAME%
@@ -52,19 +51,18 @@ build_script:
   - copy .\dist\circuitblocks-agent_windows_386\circuitblocks-agent.exe %MYAPP%.exe
   - .\go-msi.exe make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH%
   - set GOARCH=amd64
-  - copy .\dist\circuitblocks-agent_windows_amd64_v1\circuitblocks-agent.exe %MYAPP%.exe 
+  - copy .\dist\circuitblocks-agent_windows_amd64_v1\circuitblocks-agent.exe %MYAPP%.exe
   - .\go-msi.exe make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH%
 
 after_deploy:
   # Choco push
   # - .\go-msi.exe choco --input %GH_APP%-%GOARCH%.msi --version %VERSION% --changelog-cmd "changelog ghrelease --version %VERSION%"
   # - choco push -k="'%CHOCOKEY%'" %GH_APP%.%VERSION%.nupkg
-    # Bintray push
+  # Bintray push
   # - never-fail jfrog bt pc --user %GH_USER% --key %BT_KEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME% %GH_USER%/msi/%GH_APP%
   # - jfrog bt upload --user %GH_USER% --key %BT_KEY%  --override=true --publish=true %GH_APP%-%GOARCH%-%VERSION%.msi %GH_USER%/msi/%GH_APP%/%VERSION%
   # - never-fail jfrog bt pc --user %GH_USER% --key %BT_KEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME% %GH_USER%/choco/%GH_APP%
   # - jfrog bt upload --user %GH_USER% --key %BT_KEY%  --override=true --publish=true %GH_APP%.%VERSION%.nupkg %GH_USER%/choco/%GH_APP%/%VERSION%
-
 
 # to disable automatic tests
 test: off
@@ -72,9 +70,9 @@ test: off
 # need this to deploy assets,
 # note that each MUST match only one file
 artifacts:
-  - path: '*-386.msi'
+  - path: "*-386.msi"
     name: msi-x86
-  - path: '*-amd64.msi'
+  - path: "*-amd64.msi"
     name: msi-x64
 
 # deploy section to github releases
