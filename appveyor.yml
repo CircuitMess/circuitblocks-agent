@@ -49,7 +49,7 @@ build_script:
   - goreleaser build --single-target --snapshot --rm-dist
   - set GOARCH=amd64
   - copy .\dist\circuitblocks-agent_windows_amd64_v1\circuitblocks-agent.exe %MYAPP%.exe
-  - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH%
+  - .\go-msi.exe make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH%
 
 after_deploy:
   # Choco push
