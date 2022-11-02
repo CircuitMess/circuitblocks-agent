@@ -21,8 +21,8 @@ install:
   # go setup
   - set PATH=%GOPATH%\bin;%PATH%
   # glide setup, if your package uses it
-  - go get -u github.com/mh-cbon/never-fail
-  - go get github.com/goreleaser/goreleaser@latest
+  #- go get -u github.com/mh-cbon/never-fail
+  - go get github.com/goreleaser/goreleaser
   # - go get -u github.com/Masterminds/glide
   # setup go-msi, choose one method
   #
