@@ -1,0 +1,47 @@
+{
+  "product": "circuitblocks-agent",
+  "company": "Circuitmess",
+  "license": "LICENSE.txt",
+  "upgrade-code": "",
+  "files": {
+    "guid": "378896D8-6749-4821-870A-44CBBB791D0C",
+    "items": [
+      "dist/circuitblocks-agent_windows_amd64_v1/circuitblocks-agent.exe"
+    ]
+  },
+  "directories": [
+    "templates"
+  ],
+  "env": {
+    "guid": "0CB88C7F-85A7-4986-B6CE-1CAD5C17EA0E",
+    "vars": [
+      {
+        "name": "PATH",
+        "value": "[INSTALLDIR]",
+        "permanent": "no",
+        "system": "no",
+        "action": "set",
+        "part": "last"
+      }
+    ]
+  },
+  "shortcuts": {
+    "guid": "d7c5a088-ff67-4e30-9ad2-e67ac85bbb85",
+    "items": [
+      {
+        "name": "hello",
+        "description": "hello web server",
+        "target": "[INSTALLDIR]\\circuitblocks-agent.exe",
+        "wdir": "INSTALLDIR",
+        "arguments": "",
+        "icon": "ico.ico"
+      }
+    ]
+  },
+  "choco": {
+    "description": "test",
+    "project-url": "https://github.com/CircuitMess/circuitblocks-agent",
+    "tags": "generate go msi nuget",
+    "license-url": "https://github.com/CircuitMess/circuitblocks-agent/blob/master/LICENSE.txt"
+  }
+}
