@@ -38,7 +38,7 @@ install:
   # method 3: via chocolatey
   - choco install changelog -y
   - choco install go-msi -y
-  - glide install
+  #- glide install
 
 
 build_script:
