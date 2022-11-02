@@ -20,8 +20,7 @@ builds:
     env:
       - CGO_ENABLED=1
     goos:
-      # - linux
-      - darwin # fake linux build in macOS in Docker
+      - linux
     goarch:
       - amd64
     ldflags:
@@ -34,6 +33,7 @@ builds:
       - windows
     goarch:
       - amd64
+      - 386
     ldflags:
       - -H=windowsgui
       - -s -w -X main.version={{.Version}}
