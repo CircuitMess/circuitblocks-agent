@@ -27,9 +27,9 @@ install:
   # setup go-msi, choose one method
   #
   # method 1: static link
-  - curl -fsSL -o C:\go-msi.msi https://github.com/mh-cbon/go-msi/releases/download/0.0.22/go-msi-amd64.msi
-  - msiexec.exe /i C:\go-msi.msi /quiet
-  - set PATH=C:\Program Files\go-msi\;%PATH% # for some reason, go-msi path needs to be added manually :(...
+  # - curl -fsSL -o C:\go-msi.msi https://github.com/mh-cbon/go-msi/releases/download/0.0.22/go-msi-amd64.msi
+  # - msiexec.exe /i C:\go-msi.msi /quiet
+  # - set PATH=C:\Program Files\go-msi\;%PATH% # for some reason, go-msi path needs to be added manually :(...
   #
   # method 2: via gh-api-cli
   # - curl -fsSL -o C:\latest.bat https://raw.githubusercontent.com/mh-cbon/latest/master/latest.bat
@@ -37,8 +37,8 @@ install:
   # - set PATH=C:\Program Files\go-msi\;%PATH%
   #
   # method 3: via chocolatey
-  #- choco install changelog -y
-  #- choco install go-msi -y
+  - choco install changelog -y
+  - choco install go-msi -y
   #- glide install
 
 build_script:
@@ -49,7 +49,7 @@ build_script:
   - goreleaser build --single-target --snapshot --rm-dist
   - set GOARCH=amd64
   - copy .\dist\circuitblocks-agent_windows_amd64_v1\circuitblocks-agent.exe %MYAPP%.exe
-  - .\go-msi.exe make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH%
+  - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH%
 
 after_deploy:
   # Choco push
