@@ -46,7 +46,7 @@ build_script:
   - set GH_USER=%APPVEYOR_ACCOUNT_NAME%
   - set VERSION=%APPVEYOR_REPO_TAG_NAME%
   # - set VERSION=1.0.2 # fake it when needed
-  - goreleaser release --single-target --snapshot --rm-dist
+  - goreleaser build --single-target --snapshot --rm-dist
   - set GOARCH=386
   - copy .\dist\circuitblocks-agent_windows_386\circuitblocks-agent.exe %MYAPP%.exe
   - .\go-msi.exe make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH%
