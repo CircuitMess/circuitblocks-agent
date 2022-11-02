@@ -33,15 +33,16 @@ install:
   #
   # method 2: via gh-api-cli
   # - curl -fsSL -o C:\latest.bat https://raw.githubusercontent.com/mh-cbon/latest/master/latest.bat
-  # - cmd /C C:\latest.bat mh-cbon go-msi amd64
+  # - cmd /C C:\Users/domagojkriskovic/latest.bat mh-cbon go-msi amd64
   # - set PATH=C:\Program Files\go-msi\;%PATH%
   #
   # method 3: via chocolatey
-  - choco install changelog -y
+  #- choco install changelog -y
   - choco install go-msi -y
   #- glide install
 
 build_script:
+  - refreshenv
   - set GH_APP=%APPVEYOR_PROJECT_NAME%
   - set GH_USER=%APPVEYOR_ACCOUNT_NAME%
   - set VERSION=%APPVEYOR_REPO_TAG_NAME%
@@ -49,7 +50,7 @@ build_script:
   - goreleaser build --single-target --snapshot --rm-dist
   - set GOARCH=amd64
   - copy .\dist\circuitblocks-agent_windows_amd64_v1\circuitblocks-agent.exe %MYAPP%.exe
-  - .\go-msi.exe make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH%
+  - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH%
 
 after_deploy:
   # Choco push
