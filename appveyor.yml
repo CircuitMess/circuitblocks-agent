@@ -22,7 +22,7 @@ install:
   - set PATH=%GOPATH%\bin;%PATH%
   # glide setup, if your package uses it
   - go get -u github.com/mh-cbon/never-fail
-  - go get -u github.com/Masterminds/glide
+  # - go get -u github.com/Masterminds/glide
   # setup go-msi, choose one method
   #
   # method 1: static link
