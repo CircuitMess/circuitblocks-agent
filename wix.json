@@ -34,7 +34,7 @@
         "target": "[INSTALLDIR]\\circuitblocks-agent.exe",
         "wdir": "INSTALLDIR",
         "arguments": "",
-        "icon": "ico.ico"
+        "icon": "icon/icon_win.ico"
       }
     ]
   },
