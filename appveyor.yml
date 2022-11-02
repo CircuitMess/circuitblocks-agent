@@ -22,14 +22,14 @@ install:
   - set PATH=%GOPATH%\bin;%PATH%
   # glide setup, if your package uses it
   #- go get -u github.com/mh-cbon/never-fail
-  - go get github.com/goreleaser/goreleaser
+  - go install github.com/goreleaser/goreleaser@latest
   # - go get -u github.com/Masterminds/glide
   # setup go-msi, choose one method
   #
   # method 1: static link
-  # - curl -fsSL -o C:\go-msi.msi https://github.com/mh-cbon/go-msi/releases/download/0.0.22/go-msi-amd64.msi
-  # - msiexec.exe /i C:\go-msi.msi /quiet
-  # - set PATH=C:\Program Files\go-msi\;%PATH% # for some reason, go-msi path needs to be added manually :(...
+  - curl -fsSL -o C:\go-msi.msi https://github.com/mh-cbon/go-msi/releases/download/0.0.22/go-msi-amd64.msi
+  - msiexec.exe /i C:\go-msi.msi /quiet
+  - set PATH=C:\Program Files\go-msi\;%PATH% # for some reason, go-msi path needs to be added manually :(...
   #
   # method 2: via gh-api-cli
   # - curl -fsSL -o C:\latest.bat https://raw.githubusercontent.com/mh-cbon/latest/master/latest.bat
@@ -37,8 +37,8 @@ install:
   # - set PATH=C:\Program Files\go-msi\;%PATH%
   #
   # method 3: via chocolatey
-  - choco install changelog -y
-  - choco install go-msi -y
+  #- choco install changelog -y
+  #- choco install go-msi -y
   #- glide install
 
 
