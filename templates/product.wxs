@@ -140,7 +140,7 @@
       <!-- this should help to propagate env var changes -->
       <CustomActionRef Id="WixBroadcastEnvironmentChange" />
 
-      <Property Id="WixShellExecTarget" Value="[#cbagent.exe]" />
+      <Property Id="WixShellExecTarget" Value="[#CircuitBlocksAgent]" />
       <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
 
       <WixVariable Id="WixUIBannerBmp" Value="c:\gopath\src\github.com\CircuitMess\circuitblocks-agent\templates\bmp\493x58.bmp" />

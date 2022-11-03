@@ -42,8 +42,7 @@ install:
   #- glide install
 
 build_script:
-  # - set VERSION=1.0.2 # fake it when needed
-  - goreleaser build --snapshot --rm-dist --id windows
+  - goreleaser build --snapshot --rm-dist
   - refreshenv
   - set PATH=%WIX%\bin;%PATH%
   - set GH_APP=%APPVEYOR_PROJECT_NAME%
