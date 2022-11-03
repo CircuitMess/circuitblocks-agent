@@ -10,39 +10,15 @@ environment:
   GOPATH: c:\gopath
   JFROG_CLI_OFFER_CONFIG: false
   VCS_URL: https://github.com/%APPVEYOR_REPO_NAME%
-  # BT_KEY:
-  #   secure: yyyy
-  # CHOCOKEY:
-  #   secure: xxxxx
 
 install:
-  # wix setup
   - set PATH=%WIX%\bin;%PATH%
-  # go setup
   - set PATH=%GOPATH%\bin;%PATH%
-  # glide setup, if your package uses it
-  #- go get -u github.com/mh-cbon/never-fail
   - go install github.com/goreleaser/goreleaser@latest
-  # - go get -u github.com/Masterminds/glide
-  # setup go-msi, choose one method
-  #
-  # method 1: static link
-  # - curl -fsSL -o C:\go-msi.msi https://github.com/mh-cbon/go-msi/releases/download/0.0.22/go-msi-amd64.msi
-  # - msiexec.exe /i C:\go-msi.msi /quiet
-  # - set PATH=C:\Program Files\go-msi\;%PATH% # for some reason, go-msi path needs to be added manually :(...
-  #
-  # method 2: via gh-api-cli
-  # - curl -fsSL -o C:\latest.bat https://raw.githubusercontent.com/mh-cbon/latest/master/latest.bat
-  # - cmd /C C:\Users/domagojkriskovic/latest.bat mh-cbon go-msi amd64
-  # - set PATH=C:\Program Files\go-msi\;%PATH%
-  #
-  # method 3: via chocolatey
-  #- choco install changelog -y
   - choco install go-msi -y
-  #- glide install
 
 build_script:
-  - goreleaser build --snapshot --rm-dist
+  - goreleaser build --snapshot --rm-dist --id windows
   - refreshenv
   - set PATH=%WIX%\bin;%PATH%
   - set GH_APP=%APPVEYOR_PROJECT_NAME%
@@ -53,15 +29,13 @@ build_script:
   - copy .\dist\windows_windows_386\circuitblocks-agent.exe .\dist\circuitblocks-agent.exe
   - copy .\dist\windows_windows_386\circuitblocks-agent.exe .\dist\circuitblocks-agent.exe-temp
   - go-msi set-guid
-  - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
+  - go-msi make --msi %GH_APP%-windows-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
   - set GOARCH=amd64
   - copy .\dist\windows_windows_amd64_v1\circuitblocks-agent.exe %MYAPP%.exe
   - copy .\dist\windows_windows_amd64_v1\circuitblocks-agent.exe .\dist\circuitblocks-agent.exe
   - copy .\dist\windows_windows_amd64_v1\circuitblocks-agent.exe .\dist\circuitblocks-agent.exe-temp
   - go-msi set-guid
-  - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
-  - go-msi set-guid
-  - go-msi make --msi %GH_APP%-arm64.msi --version %VERSION% --arch %GOARCH% -s ./templates
+  - go-msi make --msi %GH_APP%-windows-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
 
 after_deploy:
   # Choco push
@@ -87,14 +61,11 @@ artifacts:
 # deploy section to github releases
 deploy:
   - provider: GitHub
-    # it should be possible to use a regexp like this /msi.*/,
-    # but I could not make it work, let me know if you find a solution
     artifact: msi-x86, msi-x64
     draft: false
     prerelease: false
-    description: "Release {APPVEYOR_REPO_TAG_NAME}"
+    description: "Release for Windows"
     auth_token:
-      # Change this to your encrypted token value
       secure: flZLfcgYxpArNKvwHHKKz+TNv6Gam/FZGQisYhWBnvZQTAGLpXKBTstk0h83vDox
     on:
       branch:
