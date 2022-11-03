@@ -126,7 +126,7 @@
 
       <UI>
          <!-- Define the installer UI -->
-         <UIRef Id="WixUI_HK" />
+         <UIRef Id="WixUI_Minimal" />
          <Publish Dialog="ExitDialog"
             Control="Finish" 
             Event="DoAction" 
