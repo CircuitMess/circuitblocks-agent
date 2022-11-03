@@ -341,8 +341,7 @@ func loop() {
 	socketHandler := wsHandler().ServeHTTP
 
 	extraOrigins := []string{
-		"https://create.arduino.cc",
-		"https://cloud.arduino.cc",
+		"https://code.circuitmess.com",
 	}
 
 	for i := 8990; i < 9001; i++ {

@@ -56,12 +56,12 @@ func (s *Systray) start() {
 	menuVer.Disable()
 
 	// Add links
-	mUrl := systray.AddMenuItem("Go to Arduino Create", "Arduino Create")
+	mUrl := systray.AddMenuItem("Open CircuitBlocks", "CircuitBlocks")
 	mDebug := systray.AddMenuItem("Open Debug Console", "Debug console")
 
 	// Remove crash-reports
-	mRmCrashes := systray.AddMenuItem("Remove crash reports", "")
-	s.updateMenuItem(mRmCrashes, s.CrashesIsEmpty())
+	// mRmCrashes := systray.AddMenuItem("Remove crash reports", "")
+	// s.updateMenuItem(mRmCrashes, s.CrashesIsEmpty())
 
 	// Add pause/quit
 	mPause := systray.AddMenuItem("Pause Agent", "")
@@ -76,12 +76,12 @@ func (s *Systray) start() {
 		for {
 			select {
 			case <-mUrl.ClickedCh:
-				_ = open.Start("https://create.arduino.cc")
+				_ = open.Start("https://code.circuitmess.com")
 			case <-mDebug.ClickedCh:
 				_ = open.Start(s.DebugURL())
-			case <-mRmCrashes.ClickedCh:
-				s.RemoveCrashes()
-				s.updateMenuItem(mRmCrashes, s.CrashesIsEmpty())
+			// case <-mRmCrashes.ClickedCh:
+			// 	s.RemoveCrashes()
+			// 	s.updateMenuItem(mRmCrashes, s.CrashesIsEmpty())
 			case <-mPause.ClickedCh:
 				s.Pause()
 			case <-mQuit.ClickedCh:
