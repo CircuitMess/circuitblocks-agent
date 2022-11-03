@@ -6,8 +6,8 @@
   "files": {
     "guid": "378896D8-6749-4821-870A-44CBBB791D0C",
     "items": [
-      "circuitblocks-agent.exe",
-      "circuitblocks-agent.exe-temp",
+      "dist/circuitblocks-agent.exe",
+      "dist/circuitblocks-agent.exe-temp",
       "config.ini"
     ]
   },
