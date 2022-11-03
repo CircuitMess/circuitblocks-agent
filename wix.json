@@ -6,8 +6,8 @@
   "files": {
     "guid": "378896D8-6749-4821-870A-44CBBB791D0C",
     "items": [
-      "dist/circuitblocks-agent_windows_amd64_v1/circuitblocks-agent.exe",
-      "dist/circuitblocks-agent_windows_amd64_v1/circuitblocks-agent.exe-temp",
+      "circuitblocks-agent.exe",
+      "circuitblocks-agent.exe-temp",
       "config.ini"
     ]
   },

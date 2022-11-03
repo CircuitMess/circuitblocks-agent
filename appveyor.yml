@@ -45,13 +45,23 @@ build_script:
   # - set VERSION=1.0.2 # fake it when needed
   - goreleaser build --snapshot --rm-dist --id windows
   - refreshenv
+  - set PATH=%WIX%\bin;%PATH%
   - set GH_APP=%APPVEYOR_PROJECT_NAME%
   - set GH_USER=%APPVEYOR_ACCOUNT_NAME%
   - set VERSION=%APPVEYOR_REPO_TAG_NAME%
+  - set GOARCH=386
+  - copy .\dist\windows_windows_%GOARCH%_v1\circuitblocks-agent-%GOARCH%.exe %MYAPP%.exe
+  - copy .\dist\windows_windows_%GOARCH%_v1\circuitblocks-agent-%GOARCH%.exe %MYAPP%.exe-temp
+  - go-msi set-guid
+  - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
   - set GOARCH=amd64
-  - copy .\dist\windows_windows_amd64_v1\circuitblocks-agent.exe %MYAPP%.exe
-  - copy .\dist\windows_windows_amd64_v1\circuitblocks-agent.exe .\dist\circuitblocks-agent_windows_amd64_v1\circuitblocks-agent.exe-temp
-  - set PATH=%WIX%\bin;%PATH%
+  - copy .\dist\windows_windows_%GOARCH%_v1\circuitblocks-agent-%GOARCH%.exe %MYAPP%.exe
+  - copy .\dist\windows_windows_%GOARCH%_v1\circuitblocks-agent-%GOARCH%.exe %MYAPP%.exe-temp
+  - go-msi set-guid
+  - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
+  - set GOARCH=arm64
+  - copy .\dist\windows_windows_%GOARCH%_v1\circuitblocks-agent-%GOARCH%.exe %MYAPP%.exe
+  - copy .\dist\windows_windows_%GOARCH%_v1\circuitblocks-agent-%GOARCH%.exe %MYAPP%.exe-temp
   - go-msi set-guid
   - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
 
@@ -75,6 +85,8 @@ artifacts:
     name: msi-x86
   - path: "*-amd64.msi"
     name: msi-x64
+  - path: "*-arm64.msi"
+    name: msi-arm64
 
 # deploy section to github releases
 deploy:
