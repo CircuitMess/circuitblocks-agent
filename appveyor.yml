@@ -84,8 +84,6 @@ artifacts:
     name: msi-x86
   - path: "*-amd64.msi"
     name: msi-x64
-  - path: "*-arm64.msi"
-    name: msi-arm64
 
 # deploy section to github releases
 deploy:
