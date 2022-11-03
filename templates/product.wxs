@@ -143,6 +143,8 @@
       <Property Id="WixShellExecTarget" Value="[#circuitblocks-agent.exe]" />
       <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
 
+      <WixVariable Id="WixUIBannerBmp" Value=".\bmp\493x58.bmp" />
+      <WixVariable Id="WixUIDialogBmp" Value=".\bmp\493x312.bmp" />
    </Product>
 
 </Wix>
