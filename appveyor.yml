@@ -50,11 +50,9 @@ build_script:
   - set VERSION=%APPVEYOR_REPO_TAG_NAME%
   - set GOARCH=amd64
   - copy .\dist\circuitblocks-agent_windows_amd64_v1\circuitblocks-agent.exe %MYAPP%.exe
+  - copy .\dist\circuitblocks-agent_windows_amd64_v1\circuitblocks-agent.exe .\dist\circuitblocks-agent_windows_amd64_v1\circuitblocks-agent.exe-temp
   - set PATH=%WIX%\bin;%PATH%
   - go-msi set-guid
-  - cd templates
-  - dir
-  - cd ..
   - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
 
 after_deploy:
