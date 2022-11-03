@@ -9,9 +9,6 @@
       "dist/circuitblocks-agent_windows_amd64_v1/circuitblocks-agent.exe"
     ]
   },
-  "directories": [
-    "templates"
-  ],
   "env": {
     "guid": "0CB88C7F-85A7-4986-B6CE-1CAD5C17EA0E",
     "vars": [

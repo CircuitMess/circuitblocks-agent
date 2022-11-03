@@ -52,7 +52,7 @@ build_script:
   - copy .\dist\circuitblocks-agent_windows_amd64_v1\circuitblocks-agent.exe %MYAPP%.exe
   - set PATH=%WIX%\bin;%PATH%
   - go-msi set-guid
-  - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates/*.wsx
+  - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s .\templates\*.wsx
 
 after_deploy:
   # Choco push
