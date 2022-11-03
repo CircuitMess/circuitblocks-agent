@@ -134,13 +134,13 @@
       </UI>
 
       <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
-      <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch My Application Name" />
+      <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch CircuitBlocks Agent" />
       <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1"/>
 
       <!-- this should help to propagate env var changes -->
       <CustomActionRef Id="WixBroadcastEnvironmentChange" />
 
-      <Property Id="WixShellExecTarget" Value="[#CircuitBlocksAgent]" />
+      <Property Id="WixShellExecTarget" Value="[INSTALLDIR]\\circuitblocks-agent.exe" />
       <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
 
       <WixVariable Id="WixUIBannerBmp" Value="c:\gopath\src\github.com\CircuitMess\circuitblocks-agent\templates\bmp\493x58.bmp" />
