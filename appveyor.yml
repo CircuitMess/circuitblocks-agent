@@ -43,6 +43,7 @@ install:
 
 build_script:
   # - set VERSION=1.0.2 # fake it when needed
+  - dir
   - goreleaser build --single-target --snapshot --rm-dist
   - refreshenv
   - set GH_APP=%APPVEYOR_PROJECT_NAME%
@@ -51,7 +52,9 @@ build_script:
   - set GOARCH=amd64
   - copy .\dist\circuitblocks-agent_windows_amd64_v1\circuitblocks-agent.exe %MYAPP%.exe
   - set PATH=%WIX%\bin;%PATH%
+  - dir
   - go-msi set-guid
+  - dir
   - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s .\templates\*.wsx
 
 after_deploy:
