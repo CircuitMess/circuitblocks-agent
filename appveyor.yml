@@ -50,18 +50,18 @@ build_script:
   - set GH_USER=%APPVEYOR_ACCOUNT_NAME%
   - set VERSION=%APPVEYOR_REPO_TAG_NAME%
   - set GOARCH=386
-  - copy .\dist\windows_windows_%GOARCH%_v1\circuitblocks-agent-%GOARCH%.exe %MYAPP%.exe
-  - copy .\dist\windows_windows_%GOARCH%_v1\circuitblocks-agent-%GOARCH%.exe %MYAPP%.exe-temp
+  - copy .\dist\windows_windows_386_v1\circuitblocks-agent-386.exe %MYAPP%.exe
+  - copy .\dist\windows_windows_386_v1\circuitblocks-agent-386.exe %MYAPP%.exe-temp
   - go-msi set-guid
   - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
   - set GOARCH=amd64
-  - copy .\dist\windows_windows_%GOARCH%_v1\circuitblocks-agent-%GOARCH%.exe %MYAPP%.exe
-  - copy .\dist\windows_windows_%GOARCH%_v1\circuitblocks-agent-%GOARCH%.exe %MYAPP%.exe-temp
+  - copy .\dist\windows_windows_amd64_v1\circuitblocks-agent-amd64.exe %MYAPP%.exe
+  - copy .\dist\windows_windows_amd64_v1\circuitblocks-agent-amd64.exe %MYAPP%.exe-temp
   - go-msi set-guid
   - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
   - set GOARCH=arm64
-  - copy .\dist\windows_windows_%GOARCH%_v1\circuitblocks-agent-%GOARCH%.exe %MYAPP%.exe
-  - copy .\dist\windows_windows_%GOARCH%_v1\circuitblocks-agent-%GOARCH%.exe %MYAPP%.exe-temp
+  - copy .\dist\windows_windows_arm64_v1\circuitblocks-agent-arm64.exe %MYAPP%.exe
+  - copy .\dist\windows_windows_arm64_v1\circuitblocks-agent-arm64.exe %MYAPP%.exe-temp
   - go-msi set-guid
   - go-msi make --msi %GH_APP%-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
 
