@@ -89,6 +89,15 @@
          </Directory>
          {{end}}
 
+         <Directory Id="StartupFolder">
+            <Component Id="RegistryEntries" Guid="1efc6d21-bf25-498d-b293-0f4ed02b6fbF">
+               <RegistryKey Root="HKCU"
+                           Key="Software\Microsoft\Windows\CurrentVersion\Run"
+                     Action="createAndRemoveOnUninstall">
+               <RegistryValue Type="string" Name="MyApp" Value="&quot;[INSTALLDIR]\\circuitblocks-agent.exe&quot;" KeyPath="yes"/>         
+               </RegistryKey>
+            </Component>
+         </Directory>
       </Directory>
 
       {{range $i, $e := .InstallHooks}}
@@ -124,16 +133,6 @@
          {{end}}
          <ComponentRef Id="RegistryEntries" />
       </Feature>
-
-      <Directory Id="StartupFolder">
-         <Component Id="RegistryEntries" Guid="1efc6d21-bf25-498d-b293-0f4ed02b6fbF">
-            <RegistryKey Root="HKCU"
-                        Key="Software\Microsoft\Windows\CurrentVersion\Run"
-                  Action="createAndRemoveOnUninstall">
-            <RegistryValue Type="string" Name="MyApp" Value="&quot;[INSTALLDIR]\\circuitblocks-agent.exe&quot;" KeyPath="yes"/>         
-            </RegistryKey>
-         </Component>
-      </Directory>
 
       <UI>
          <!-- Define the installer UI -->
