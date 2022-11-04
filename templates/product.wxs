@@ -44,17 +44,6 @@
                {{end}}
                {{end}}
             </Directory>
-            <Directory Id="StartupFolder"> 
-               <Component Id="ApplicationShortCutStartUp" Guid="{BCC2E481-53AF-4690-912D-1051B930B910}">
-                  <Shortcut Id="AppShortCutStartUp" Name="CircuitBlocksAgent"
-                        Description="CircuitBlocks Agent"
-                        Target="[INSTALLDIR]circuitblocks-agent.exe"
-                        WorkingDirectory="INSTALLDIR" />
-                  <RegistryKey Root="HKLM" Key="CircuitBlocksAgent" Action="createAndRemoveOnUninstall">
-                     <RegistryValue Name="ShortCutStartUp" Type="integer" Value="1" KeyPath="yes"  />
-                     </RegistryKey>   
-               </Component>
-             </Directory> 
          </Directory>
 
          {{if gt (.Env.Vars | len) 0}}
@@ -133,7 +122,6 @@
          {{range $i, $e := .Directories}}
          <ComponentGroupRef Id="AppFiles{{$i}}" />
          {{end}}
-         <ComponentRef Id="ApplicationShortCutStartUp" />
       </Feature>
 
       <UI>
