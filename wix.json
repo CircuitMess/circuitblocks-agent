@@ -7,7 +7,8 @@
     "items": [
       "dist/circuitblocks-agent.exe",
       "dist/circuitblocks-agent.exe-temp",
-      "config.ini"
+      "config.ini",
+      "icon/icon_win.ico"
     ]
   },
   "env": {
@@ -31,7 +32,7 @@
         "target": "[INSTALLDIR]\\circuitblocks-agent.exe",
         "wdir": "INSTALLDIR",
         "arguments": "",
-        "icon": "icon/icon_win.ico"
+        "icon": "[INSTALLDIR]\\icon_win.ico"
       }
     ]
   }

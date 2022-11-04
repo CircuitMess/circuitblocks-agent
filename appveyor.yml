@@ -29,13 +29,7 @@ build_script:
   - copy .\dist\windows_windows_386\circuitblocks-agent.exe .\dist\circuitblocks-agent.exe
   - copy .\dist\windows_windows_386\circuitblocks-agent.exe .\dist\circuitblocks-agent.exe-temp
   - go-msi set-guid
-  - go-msi make --msi %GH_APP%-windows-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
-  - set GOARCH=amd64
-  - copy .\dist\windows_windows_amd64_v1\circuitblocks-agent.exe %MYAPP%.exe
-  - copy .\dist\windows_windows_amd64_v1\circuitblocks-agent.exe .\dist\circuitblocks-agent.exe
-  - copy .\dist\windows_windows_amd64_v1\circuitblocks-agent.exe .\dist\circuitblocks-agent.exe-temp
-  - go-msi set-guid
-  - go-msi make --msi %GH_APP%-windows-%GOARCH%.msi --version %VERSION% --arch %GOARCH% -s ./templates
+  - go-msi make --msi %GH_APP%-windows.msi --version %VERSION% --arch %GOARCH% -s ./templates
 
 after_deploy:
   # Choco push
@@ -53,15 +47,13 @@ test: off
 # need this to deploy assets,
 # note that each MUST match only one file
 artifacts:
-  - path: "*-386.msi"
-    name: msi-x86
-  - path: "*-amd64.msi"
-    name: msi-x64
+  - path: "*.msi"
+    name: msi
 
 # deploy section to github releases
 deploy:
   - provider: GitHub
-    artifact: msi-x86, msi-x64
+    artifact: msi
     draft: false
     prerelease: false
     description: "Release for Windows"
