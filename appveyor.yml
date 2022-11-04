@@ -14,20 +14,19 @@ environment:
 install:
   - set PATH=%WIX%\bin;%PATH%
   - set PATH=%GOPATH%\bin;%PATH%
-  - go install github.com/goreleaser/goreleaser@latest
+  #- go install github.com/goreleaser/goreleaser@latest
   - choco install go-msi -y
 
 build_script:
-  - goreleaser build --snapshot --rm-dist --id windows
-  - refreshenv
+  #- goreleaser build --snapshot --rm-dist --id windows
+  #- refreshenv
   - set PATH=%WIX%\bin;%PATH%
   - set GH_APP=%APPVEYOR_PROJECT_NAME%
   - set GH_USER=%APPVEYOR_ACCOUNT_NAME%
   - set VERSION=%APPVEYOR_REPO_TAG_NAME%
   - set GOARCH=386
-  - copy .\dist\windows_windows_386\circuitblocks-agent.exe %MYAPP%.exe
-  - copy .\dist\windows_windows_386\circuitblocks-agent.exe .\dist\circuitblocks-agent.exe
-  - copy .\dist\windows_windows_386\circuitblocks-agent.exe .\dist\circuitblocks-agent.exe-temp
+  - copy .\debug\circuitblocks-agent.exe %MYAPP%.exe
+  - copy .\debug\circuitblocks-agent.exe .\debug\circuitblocks-agent.exe-temp
   - go-msi set-guid
   - go-msi make --msi %GH_APP%-windows.msi --version %VERSION% --arch %GOARCH% -s ./templates
 

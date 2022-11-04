@@ -5,8 +5,8 @@
   "upgrade-code": "",
   "files": {
     "items": [
-      "dist/circuitblocks-agent.exe",
-      "dist/circuitblocks-agent.exe-temp",
+      "debug/circuitblocks-agent.exe",
+      "debug/circuitblocks-agent.exe-temp",
       "config.ini"
     ]
   },

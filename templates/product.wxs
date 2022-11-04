@@ -125,8 +125,7 @@
          <ComponentRef Id="RegistryEntries" />
       </Feature>
 
-      <DirectoryRef Id="ApplicationProgramsFolder">
-               
+      <Directory Id="StartupFolder">
          <Component Id="RegistryEntries" Guid="1efc6d21-bf25-498d-b293-0f4ed02b6fbF">
             <RegistryKey Root="HKCU"
                         Key="Software\Microsoft\Windows\CurrentVersion\Run"
@@ -134,7 +133,7 @@
             <RegistryValue Type="string" Name="MyApp" Value="&quot;[INSTALLDIR]\\circuitblocks-agent.exe&quot;" KeyPath="yes"/>         
             </RegistryKey>
          </Component>
-      </DirectoryRef>
+      </Directory>
 
       <UI>
          <!-- Define the installer UI -->
