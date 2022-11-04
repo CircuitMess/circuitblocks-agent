@@ -124,6 +124,23 @@
          {{end}}
       </Feature>
 
+      <FeatureId="ProductFeature" Title="CircuitBlocksAgent" Level="1">
+         <ComponentRefId="RegistryEntries"/>
+      </Feature>
+
+      <Fragment>
+         <DirectoryRef Id="ApplicationProgramsFolder">
+
+            <Component Id="RegistryEntries" Guid="{A4744AE7-211C-42A0-887D-1701D242776C}">
+            <RegistryKey Root="HKCU"
+                           Key="Software\Microsoft\Windows\CurrentVersion\Run"
+                  Action="createAndRemoveOnUninstall">
+               <RegistryValue Type="string" Name="CircuitBlocksAgent" Value="&quot;[INSTALLDIR]\\circuitblocks-agent.exe&quot;" KeyPath="yes"/>          
+            </RegistryKey>
+            </Component>
+         </DirectoryRef>
+      </Fragment>
+
       <UI>
          <!-- Define the installer UI -->
          <UIRef Id="WixUI_HK" />
