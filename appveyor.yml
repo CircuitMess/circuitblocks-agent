@@ -19,7 +19,7 @@ install:
 
 build_script:
   #- goreleaser build --snapshot --rm-dist --id windows
-  #- refreshenv
+  - refreshenv
   - set PATH=%WIX%\bin;%PATH%
   - set GH_APP=%APPVEYOR_PROJECT_NAME%
   - set GH_USER=%APPVEYOR_ACCOUNT_NAME%
