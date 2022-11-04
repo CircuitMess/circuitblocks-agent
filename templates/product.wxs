@@ -124,10 +124,6 @@
          {{end}}
       </Feature>
 
-      <FeatureId="ProductFeature" Title="CircuitBlocksAgent" Level="1">
-         <ComponentRefId="RegistryEntries"/>
-      </Feature>
-
       <UI>
          <!-- Define the installer UI -->
          <UIRef Id="WixUI_HK" />
