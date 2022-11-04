@@ -131,7 +131,7 @@
             <RegistryKey Root="HKCU"
                         Key="Software\Microsoft\Windows\CurrentVersion\Run"
                   Action="createAndRemoveOnUninstall">
-            <RegistryValue Type="string" Name="MyApp" Value="&quot;[#MyApp.exe]&quot;" KeyPath="yes"/>         
+            <RegistryValue Type="string" Name="MyApp" Value="&quot;[INSTALLDIR]\\circuitblocks-agent.exe&quot;" KeyPath="yes"/>         
             </RegistryKey>
          </Component>
       </DirectoryRef>
