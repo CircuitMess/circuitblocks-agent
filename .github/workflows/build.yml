@@ -24,6 +24,12 @@ jobs:
 
       - name: Build
         run: goreleaser build --snapshot --rm-dist --id darwin
+      
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
 
   # build-linux:
   #   name: Build (Linux)
