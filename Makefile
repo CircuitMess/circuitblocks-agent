@@ -14,7 +14,7 @@ build-win:
 	goreleaser build --snapshot --rm-dist --id windows
 
 build-darwin:
-	goreleaser build --snapshot --rm-dist --id darwin
+	./build-darwin.sh
 
 build-linux:
 	goreleaser build --snapshot --rm-dist --id linux

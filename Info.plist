@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict><key>CFBundlePackageType</key><string>APPL</string><key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+
+    <key>CFBundleIconFile</key>           <string>icon.icns</string>
+
+    <key>CFBundleName</key>               <string>CircuitBlocks Agent</string>
+    <key>CFBundleExecutable</key>         <string>circuitblocks-agent</string>
+    <key>CFBundleIdentifier</key>         <string>code.circuitmess.com</string>
+
+    <key>CFBundleVersion</key>            <string>1.0.64</string>
+    <key>NSHumanReadableCopyright</key>   <string>© Copyright 2022 CircuitMess</string>
+    <key>CFBundleShortVersionString</key> <string>1.0.64</string>
+    <key>LSUIElement</key>                <true/>
+    <!-- Needed for Apache Callback -->
+    <key>NSPrincipalClass</key><string>NSApplication</string>
+    <key>NSMainNibFile</key><string>MainMenu</string>
+
+</dict></plist>

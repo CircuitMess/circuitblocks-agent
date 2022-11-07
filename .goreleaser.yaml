@@ -18,14 +18,18 @@ builds:
       - -H=windowsgui
       - -s -w -X main.version={{.Version}}
 
-  - id: "unix"
+  - id: "darwin"
     env:
       - CGO_ENABLED=1
     goos:
       - darwin
+
+  - id: "linux"
+    env:
+      - CGO_ENABLED=1
+    goos:
       - linux
-    goarch:
-      - amd64
+
 archives:
   - replacements:
       darwin: Darwin
