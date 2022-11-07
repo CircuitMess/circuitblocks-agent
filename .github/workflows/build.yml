@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Get dependencies
-        run: go get -v -t -d ./...
+        run: go get -v -t -d ./... && go install github.com/goreleaser/goreleaser@latest
 
       - name: Build
         run: goreleaser build --snapshot --rm-dist --id darwin
