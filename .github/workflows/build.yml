@@ -1,35 +1,35 @@
-name: Build
+# name: Build
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     branches: [main]
 
-jobs:
-  build-darwin:
-    name: Build (macOS)
-    runs-on: macos-latest
-    steps:
-      - name: Set up Go 1.x
-        uses: actions/setup-go@v2
-        with:
-          go-version: ^1.15
+# jobs:
+#   build-darwin:
+#     name: Build (macOS)
+#     runs-on: macos-latest
+#     steps:
+#       - name: Set up Go 1.x
+#         uses: actions/setup-go@v2
+#         with:
+#           go-version: ^1.15
 
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v2
+#       - name: Check out code into the Go module directory
+#         uses: actions/checkout@v2
 
-      - name: Get dependencies
-        run: go get -v -t -d ./... && go install github.com/goreleaser/goreleaser@latest
+#       - name: Get dependencies
+#         run: go get -v -t -d ./... && go install github.com/goreleaser/goreleaser@latest
 
-      - name: Build
-        run: goreleaser build --snapshot --rm-dist --id darwin
+#       - name: Build
+#         run: goreleaser build --snapshot --rm-dist --id darwin
       
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: dist/
+#       - name: 'Upload Artifact'
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: dist
+#           path: dist/
 
   # build-linux:
   #   name: Build (Linux)
