@@ -21,13 +21,16 @@ codesign --deep --force --options=runtime --sign "1CF7C6C4A31BA61D9F4C5E3D97C531
 # create-dmg --overwrite "CircuitBlocksAgent.app"
 # mv ./CircuitBlocksAgent\ 1.0.64.dmg ./CircuitBlocksAgent-osx.dmg
 # xcrun notarytool submit ./CircuitBlocksAgent-osx.dmg --keychain-profile circuitblocks --wait
+mkdir ./scripts
 mkdir ./payload
 mkdir ./payload/Applications
 mkdir ./payload/Library
 mkdir ./payload/Library/LaunchAgents
 mv ./CircuitBlocksAgent.app ./payload/Applications
+cp ../pkg-assets/postinstall ./scripts/postinstall
 cp ../pkg-assets/CircuitBlocksAgent.plist ./payload/Library/LaunchAgents
 cp ../pkg-assets/pkg-installer.plist ./pkg-installer.plist
-pkgbuild --root ./payload --ownership preserve --identifier com.circuitmess.pkg.CircuitBlocksAgent --component-plist pkg-installer.plist --sign "010471773D206582CE44C296760B8E01FA57C8EC" ./circuitblocks-agent.pkg
+chmod +x ./scripts/postinstall
+pkgbuild --root ./payload --ownership preserve --identifier com.circuitmess.pkg.CircuitBlocksAgent --component-plist pkg-installer.plist --scripts scripts --sign "010471773D206582CE44C296760B8E01FA57C8EC" ./circuitblocks-agent.pkg
 productsign --sign "87B75286D0D0D8C205B28BC29ADEFAB0AE9DD903" ./circuitblocks-agent.pkg ./circuitblocks-agent-signed.pkg
 xcrun notarytool submit ./circuitblocks-agent-signed.pkg --keychain-profile circuitblocks --wait
