@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+cd /Applications/CircuitBlocksAgent.app/Contents/MacOS
+./circuitblocks-agent -generateCert=true
+sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ./ca.cert.pem
+sudo chmod 755 ./key.pem
+sudo rm ./ca.key.pem
+sudo rm ./ca.cert.cer
+sudo rm ./ca.cert.pem
+
+open -n -a /Applications/CircuitBlocksAgent.app
+
+exit 0
