@@ -21,6 +21,7 @@ builds:
   - id: "darwin"
     env:
       - CGO_ENABLED=1
+      - CGO_CFLAGS=-mmacosx-version-min=10.11
     goos:
       - darwin
 
