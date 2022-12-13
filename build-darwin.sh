@@ -1,4 +1,5 @@
 #!/bin/sh
+export MACOSX_DEPLOYMENT_TARGET=10.11
 goreleaser build --snapshot --rm-dist --id darwin
 
 mkdir -p ./dist/CircuitBlocksAgent.app/Contents/Resources
